@@ -77,7 +77,14 @@ struct DCArray {
     DCArray(DCArray &&leftVal) : size(leftVal.size), data(leftVal.data) {
         leftVal.data = nullptr;
     }
-
+    
+    DCArray& operator=(DCArray &&leftVal){
+        size = leftVal.size; 
+        data = leftVal.data;
+        leftVal.data = nullptr;
+        return *this;
+    }
+    
     ~DCArray() { delete[] data; }
 };
 
